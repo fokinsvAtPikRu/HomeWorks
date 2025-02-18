@@ -26,6 +26,13 @@ namespace Lesson2
         }
         public static double AngleFromDegreesToRadians(int angleDegrees, int angleMinutes, int angleSeconds)
             => (angleDegrees % 360 + angleMinutes / (0.6*100) + angleSeconds / (0.6*0.6*100*100)) * PI / 180;
-        public static void Foo() { }
+        public static (int,int,double) ConvertInchToMeter(double inch) 
+        {
+            double milimeter = inch * 25.4;
+            int meter = (int)milimeter / 1000;
+            int santimeter = (int)milimeter / 10;
+            milimeter = milimeter % 10;
+            return (meter, santimeter, milimeter);
+        }
     }
 }
