@@ -34,5 +34,11 @@ namespace Lesson2
             milimeter = milimeter % 10;
             return (meter, santimeter, milimeter);
         }
+        public static int SwapSecondAndFourthFigure(int startNumber)
+        {
+            int secondFigure = (startNumber % 100 / 10);// *10;
+            int fourtFigure = (startNumber % 10000 / 1000);// * 1000;
+            return startNumber-secondFigure*10-fourtFigure*1000+secondFigure*1000+fourtFigure*10;
+        }
     }
 }

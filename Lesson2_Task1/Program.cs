@@ -5,10 +5,11 @@ namespace Lesson2_Task1
     {
         public static void Main() 
         {
-            var res = Lesson2.Lesson2.ConvertInchToMeter(157.0);
-            Console.WriteLine($"meter {res.Item1}");
-            Console.WriteLine($"santimeter {res.Item2}");
-            Console.WriteLine($"milimeter {res.Item3}");
+            int i = 1234;
+            string s =i.ToString();
+            string s1 = s[2] + s[1] + s[0] + s[3];
+
+            Console.WriteLine(i.ToString());
             //ConsoleKey key=ConsoleKey.C;                
             //    while (key != ConsoleKey.Escape)
             //{
