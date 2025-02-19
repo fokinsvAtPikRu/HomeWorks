@@ -1,15 +1,11 @@
 ﻿using System;
-namespace Lesson2_Task1
+namespace Lesson2
 {
     static class Program
     {
         public static void Main() 
-        {
-            int i = 1234;
-            string s =i.ToString();
-            string s1 = s[2] + s[1] + s[0] + s[3];
-
-            Console.WriteLine(i.ToString());
+        {            
+            Console.WriteLine(Lesson2.RoundToHalf(17.9M));
             //ConsoleKey key=ConsoleKey.C;                
             //    while (key != ConsoleKey.Escape)
             //{

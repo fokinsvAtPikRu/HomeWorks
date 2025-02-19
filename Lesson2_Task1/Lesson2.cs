@@ -40,5 +40,8 @@ namespace Lesson2
             int fourtFigure = (startNumber % 10000 / 1000);// * 1000;
             return startNumber-secondFigure*10-fourtFigure*1000+secondFigure*1000+fourtFigure*10;
         }
+        public static decimal RoundUp(decimal length)=>Ceiling(length);
+        public static decimal RoundToHalf(decimal length) =>
+            Round(length * 2) / 2;
     }
 }
