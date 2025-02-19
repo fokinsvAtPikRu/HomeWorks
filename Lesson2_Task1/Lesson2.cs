@@ -30,7 +30,7 @@ namespace Lesson2
         {
             double milimeter = inch * 25.4;
             int meter = (int)milimeter / 1000;
-            int santimeter = (int)milimeter / 10;
+            int santimeter = (int)milimeter % 1000 /10;
             milimeter = milimeter % 10;
             return (meter, santimeter, milimeter);
         }

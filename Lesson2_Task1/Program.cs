@@ -5,8 +5,10 @@ namespace Lesson2_Task1
     {
         public static void Main() 
         {
-            var res=Lesson2.Lesson2.AngleFromDegreesToRadians(540,0,0);
-            Console.WriteLine(res);
+            var res = Lesson2.Lesson2.ConvertInchToMeter(157.0);
+            Console.WriteLine($"meter {res.Item1}");
+            Console.WriteLine($"santimeter {res.Item2}");
+            Console.WriteLine($"milimeter {res.Item3}");
             //ConsoleKey key=ConsoleKey.C;                
             //    while (key != ConsoleKey.Escape)
             //{
