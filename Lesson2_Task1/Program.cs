@@ -15,19 +15,19 @@ namespace Lesson2
                 Console.WriteLine("4. Поменять вторую и четвертую цифру.");
                 Console.WriteLine("5. Округление вверх.");
                 Console.WriteLine("6. Округление до 0,5.");
-                Console.WriteLine("7. Поменть значение двух переменных без третьей.");
-                Console.WriteLine("0 - выход");
+                Console.WriteLine("7. Поменть значение двух переменных без третьей.");                
                 Console.Write("Введите число:");
                 var str=Console.ReadLine();
                 try
                 {
                     choiсe = Convert.ToInt32(str);
+                    // вызов ChoiceTask надо вытащить из блока try, но есть проблема с видимостью переменной choice
                     ChoiceTask(choiсe);
                 }
                 catch(FormatException)
                 {
                     Console.WriteLine($"Ошибка! {str} не является числом");
-                }
+                }                
                 Console.WriteLine("Для продолжения нажмите любую кнопку. Для выхода ESC.");
                 key = Console.ReadKey().Key;
                 Console.Write(((int)key));
@@ -48,19 +48,19 @@ namespace Lesson2
                     Task2();
                     break;
                 case 3:
-
+                    Task3();
                     break;
                 case 4:
-
+                    Task4();
                     break;
                 case 5:
-
+                    Task5();
                     break;
                 case 6:
-
+                    Task6();
                     break;
                 case 7:
-
+                    Task7();
                     break;
             }
         }
@@ -88,15 +88,41 @@ namespace Lesson2
         }
         public static void Task3()
         {
-            Console.Write("Градусы:");
-            // тут и дальше методы Convert надо обернуть в try catch
-            var angleDegrees = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Угловые минуты:");
-            var angleMinutes = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Угловые секунды:");
-            var angleSeconds = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine($"Величина угла в радианах: {Lesson2.AngleFromDegreesToRadians(angleDegrees, angleMinutes, angleSeconds)}");
+            Console.Write("Длина в дюймах:");            
+            var lengthInch = Convert.ToDouble(Console.ReadLine());
+            var lengthMetric = Lesson2.ConvertInchToMeter(lengthInch);
+            Console.WriteLine
+                ($"Длина {lengthMetric.Item1} м {lengthMetric.Item2} см {lengthMetric.Item3} мм");
         }
-
+        public static void Task4()
+        {
+            Console.Write("Введите число:");
+            var number = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine
+                ($"Меняем 2 и 4 цифру. Результат - {Lesson2.SwapSecondAndFourthFigure(number)} мм");
+        }
+        public static void Task5()
+        {
+            Console.Write("Введите число:");
+            var number = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine
+                ($"Округляем вверх. Результат - {Lesson2.RoundUp(number)}");
+        }
+        public static void Task6()
+        {
+            Console.Write("Введите число:");
+            var number = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine
+                ($"Округляем с точностью 0,5. Результат - {Lesson2.RoundToHalf(number)}");
+        }
+        public static void Task7()
+        {
+            Console.Write("Введите первое число:");
+            var firstArg = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите второе число:");
+            var secondArg = Convert.ToInt32(Console.ReadLine());
+            Lesson2.SwapTwoNumbersWithoutThirdVariable(ref firstArg, ref secondArg);
+            Console.WriteLine($"Первое число = {firstArg} \nВторое число = {secondArg}");
+        }
     }
 }
