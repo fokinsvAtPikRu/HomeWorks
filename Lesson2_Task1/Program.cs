@@ -17,17 +17,9 @@ namespace Lesson2
                 Console.WriteLine("6. Округление до 0,5.");
                 Console.WriteLine("7. Поменть значение двух переменных без третьей.");                
                 Console.Write("Введите число:");
-                var str=Console.ReadLine();
-                try
-                {
-                    choiсe = Convert.ToInt32(str);
-                    // вызов ChoiceTask надо вытащить из блока try, но есть проблема с видимостью переменной choice
-                    ChoiceTask(choiсe);
-                }
-                catch(FormatException)
-                {
-                    Console.WriteLine($"Ошибка! {str} не является числом");
-                }                
+                var str=Console.ReadLine();                
+                choiсe = Convert.ToInt32(str);                
+                ChoiceTask(choiсe);                                
                 Console.WriteLine("Для продолжения нажмите любую кнопку. Для выхода ESC.");
                 key = Console.ReadKey().Key;
                 Console.Write(((int)key));
