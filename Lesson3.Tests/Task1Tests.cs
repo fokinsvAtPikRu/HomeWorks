@@ -9,7 +9,7 @@
             int value0 = 5;
             int value1 = 5;
             // Act
-            var result = Lesson3.Lesson3Methods.SignOfTheCompraisonResult(value0, value1);
+            var result = Lesson3.Lesson3Task1.SignOfTheCompraisonResult(value0, value1);
             // Assert
             Assert.Equal('=', result);
         }
@@ -21,7 +21,7 @@
             int value0 = 0;
             int value1 = 5;
             // Act
-            var result = Lesson3.Lesson3Methods.SignOfTheCompraisonResult(value0, value1);
+            var result = Lesson3.Lesson3Task1.SignOfTheCompraisonResult(value0, value1);
             // Assert
             Assert.Equal('<', result);
         }
@@ -32,7 +32,7 @@
             int value0 = 5;
             int value1 = 0;
             // Act
-            var result = Lesson3.Lesson3Methods.SignOfTheCompraisonResult(value0, value1);
+            var result = Lesson3.Lesson3Task1.SignOfTheCompraisonResult(value0, value1);
             // Assert
             Assert.Equal('>', result);
         }        

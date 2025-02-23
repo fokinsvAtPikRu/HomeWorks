@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lesson3
 {
-    public static class Lesson3Methods
+    public static class Lesson3Task1
     {
         /// <summary>
         /// Task1

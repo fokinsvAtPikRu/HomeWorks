@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Lesson3
 {
+    /// <summary>
+    /// Task 2, 3, 4 Summa and Mediana for lazy infinity list 
+    /// </summary>
     public class InfinityLazyList
     {
         private int count;
@@ -25,6 +28,6 @@ namespace Lesson3
             summa += value;
         }
         public int Max() => max;
-        public double Mediana => (double)summa/(double)count;
+        public double Mediana() => (double)summa/(double)count;
     }
 }
