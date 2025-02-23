@@ -141,6 +141,7 @@ namespace Lesson3.Tests
         }
         #endregion
         // Task 9 tests
+        #region
         [Fact]
         public void NotIsInRangeMinusTenPlusTen_minus42_true()
         {
@@ -191,5 +192,6 @@ namespace Lesson3.Tests
             // Assert
             Assert.True(result);
         }
+        #endregion
     }
 }
