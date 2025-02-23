@@ -2,6 +2,6 @@
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Console.WriteLine(3 / 100 == 0 && 3 / 10 != 0);
     }
 }
