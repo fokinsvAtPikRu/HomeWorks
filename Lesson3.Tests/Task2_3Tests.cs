@@ -8,7 +8,7 @@ namespace Lesson3
 {
     public class Task2_3Tests
     {       
-        [Theory]
+        [Theory(DisplayName = "Урок 3. Задание 2, 3, 4. Вернуть максимум и медиану последовательности чисел.")]
         [InlineData(new[] {1,3,5},5)]
         [InlineData(new[] {10,2,2,2},10)]
         [InlineData(new[] {1,3,5,159,-14,68,438,0,15,42},438)]
@@ -27,13 +27,14 @@ namespace Lesson3
                     count++;
                 }
             }
-            var medianaExpected = summa / count;
+            var medianaExpected = (double)summa / (double)count;
             // Act
             int max = list.Max();
             double mediana = list.Mediana();
             // Assert
             Assert.Equal(maxExpected, max);
-            Assert.Equal(medianaExpected, mediana);
+            Assert.Equal(medianaExpected, mediana,15);
+            
         }
     }
 

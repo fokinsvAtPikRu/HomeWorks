@@ -4,194 +4,115 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lesson3.Tests
+namespace Lesson3
 {
     public class Tasks5_9Tests
     {
         // Task 5 tests
         #region
-        [Fact]        
-        public void EndsZero_159_false()
+        [Theory(DisplayName = "Урок 3. Задание 5. Последняя цифра числа ноль.")]
+        [InlineData(159, false)]
+        [InlineData(80, true)]
+        [InlineData(0, true)]
+        [InlineData(-14, false)]
+        [InlineData(-100, true)]
+
+        public void EndsZero_SomeValue_ResultBool(int value, bool resultExpected)
         {
             // Arrange
-            int value = 159;            
+
             // Act
             var result = value.EndsZero();
             // Assert
-            Assert.False(result);
-        }
-        [Fact]
-        public void EndsZero_80_true()
-        {
-            // Arrange
-            int value = 80;
-            // Act
-            var result = value.EndsZero();
-            // Assert
-            Assert.True(result);
+            if (resultExpected)
+                Assert.True(result);
+            else
+                Assert.False(result);
         }
         #endregion
         // Task 6 tests
         #region
-        [Fact]
-        public void IsEven_341_false()
+        [Theory(DisplayName = "Урок 3. Задание 6. Четность числа.")]
+        [InlineData(-99, false)]
+        [InlineData(-48, true)]
+        [InlineData(0, true)]
+        [InlineData(17, false)]
+        [InlineData(42, true)]
+        public void IsEven_SomeValues_ResultBool(int value, bool resultExpected)
         {
             // Arrange
-            int value = 341;
+
             // Act
             var result = value.IsEven();
             // Assert
-            Assert.False(result);
-        }
-        [Fact]
-        public void IsEven_42_true()
-        {
-            // Arrange
-            int value = 42;
-            // Act
-            var result = value.IsEven();
-            // Assert
-            Assert.True(result);
+            if (resultExpected)
+                Assert.True(result);
+            else
+                Assert.False(result);
+
         }
         #endregion
         // Task 7 tests
         #region
-        [Fact]
-        public void IsTwoDigitNumber_3_false()
+        [Theory(DisplayName = "Урок 3. Задание 7. Является ли число двузначным.")]
+        [InlineData(3, false)]
+        [InlineData(31, true)]
+        [InlineData(378, false)]
+        [InlineData(-28, true)]
+        public void IsTwoDigitNumber_SomeValues_BoolResult(int value, bool resultExpected)
         {
             // Arrange
-            int value = 3;
+
             // Act
             var result = value.IsTwoDigitNumber();
             // Assert
-            Assert.False(result);
-        }
-        [Fact]
-        public void IsTwoDigitNumber_42_true()
-        {
-            // Arrange
-            int value = 42;
-            // Act
-            var result = value.IsTwoDigitNumber();
-            // Assert
-            Assert.True(result);
-        }
-        [Fact]
-        public void IsTwoDigitNumber_345_false()
-        {
-            // Arrange
-            int value = 345;
-            // Act
-            var result = value.IsTwoDigitNumber();
-            // Assert
-            Assert.False(result);
+            if (resultExpected)
+                Assert.True(result);
+            else
+                Assert.False(result);
         }
         #endregion
         // Task 8 tests
         #region
-        [Fact]
-        public void IsInRangeMinusTenPlusTen_minus20_false()
+        [Theory(DisplayName = "Урок 3. Задание 8. Значение находится в диапазоне [-10;+10].")]
+        [InlineData(-30, false)]
+        [InlineData(-10, true)]
+        [InlineData(-5, true)]
+        [InlineData(10, true)]
+        [InlineData(54, false)]
+        public void IsInRangeMinusTenPlusTen_minus20_false(int value, bool resultExpected)
         {
             // Arrange
-            int value = -20;
-            // Act
-            var result=value.IsInRangeMinusTenPlusTen();
-            // Assert
-            Assert.False(result);        
-        }
-        [Fact]
-        public void IsInRangeMinusTenPlusTen_minus10_true()
-        {
-            // Arrange
-            int value = -10;
+
             // Act
             var result = value.IsInRangeMinusTenPlusTen();
             // Assert
-            Assert.True(result);
-        }
-        [Fact]       
-        public void IsInRangeMinusTenPlusTen_0_true()
-        {
-            // Arrange
-            int value = 0;
-            // Act
-            var result = value.IsInRangeMinusTenPlusTen();
-            // Assert
-            Assert.True(result);
-        }
-        [Fact]
-        public void IsInRangeMinusTenPlusTen_10_true()
-        {
-            // Arrange
-            int value = 10;
-            // Act
-            var result = value.IsInRangeMinusTenPlusTen();
-            // Assert
-            Assert.True(result);
-        }
-        [Fact]
-        public void IsInRangeMinusTenPlusTen_42_false()
-        {
-            // Arrange
-            int value = 42;
-            // Act
-            var result = value.IsInRangeMinusTenPlusTen();
-            // Assert
-            Assert.False(result);
+            if (resultExpected)
+                Assert.True(result);
+            else
+                Assert.False(result);
         }
         #endregion
         // Task 9 tests
         #region
-        [Fact]
-        public void NotIsInRangeMinusTenPlusTen_minus42_true()
+        [Theory(DisplayName = "Урок 3. Задание 9. Значение не находится в диапазоне (-10,+10).")]
+        [InlineData(-25, true)]
+        [InlineData(-10, true)]
+        [InlineData(5, false)]
+        [InlineData(10, true)]
+        [InlineData(25, true)]
+        public void NotIsInRangeMinusTenPlusTen_minus42_true(int value, bool resultExpected)
         {
             // Arrange
-            int value = -42;
+
             // Act
             var result = value.NotIsInRangeMinusTenPlusTen();
             // Assert
-            Assert.True(result);
-        }
-        [Fact]
-        public void NotIsInRangeMinusTenPlusTen_minus10_true()
-        {
-            // Arrange
-            int value = -10;
-            // Act
-            var result = value.NotIsInRangeMinusTenPlusTen();
-            // Assert
-            Assert.True(result);
-        }
-        [Fact]
-        public void NotIsInRangeMinusTenPlusTen_2_false()
-        {
-            // Arrange
-            int value = 2;
-            // Act
-            var result = value.NotIsInRangeMinusTenPlusTen();
-            // Assert
-            Assert.False(result);
-        }
-        [Fact]
-        public void NotIsInRangeMinusTenPlusTen_10_true()
-        {
-            // Arrange
-            int value = 10;
-            // Act
-            var result = value.NotIsInRangeMinusTenPlusTen();
-            // Assert
-            Assert.True(result);
-        }
-        [Fact]
-        public void NotIsInRangeMinusTenPlusTen_22_false()
-        {
-            // Arrange
-            int value = 22;
-            // Act
-            var result = value.NotIsInRangeMinusTenPlusTen();
-            // Assert
-            Assert.True(result);
-        }
+            if (resultExpected)
+                Assert.True(result);
+            else 
+                Assert.False(result);
+        }        
         #endregion
     }
 }
