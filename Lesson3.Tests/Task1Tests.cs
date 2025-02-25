@@ -12,7 +12,7 @@
             // Arrange
             
             // Act
-            var result = Lesson3.Lesson3Task1.SignOfTheCompraisonResult(value0, value1);
+            var result = Lesson3.Lesson3Tasks.SignOfTheCompraisonResult(value0, value1);
             // Assert
             Assert.Equal(resultExpected, result);
         }
