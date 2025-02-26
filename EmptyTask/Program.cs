@@ -1,7 +1,10 @@
-﻿internal class Program
+﻿using System.Text;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine(3 / 100 == 0 && 3 / 10 != 0);
+        Console.WriteLine("Hello, World!");
     }
+    
 }
