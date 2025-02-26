@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static System.Math;
 using System.Threading.Tasks;
 
 namespace Lesson3
@@ -67,7 +68,13 @@ namespace Lesson3
         /// <returns></returns>
         public static bool IsEnoughPlace((int p, int q) house1, (int r,int s ) house2, (int a, int b) area)
         {
-            return true;
+            (int length, int width) minArea;
+            minArea.length=Max(Max(house1.p,house1.q),Max(house2.r, house2.s));
+            minArea.width = Min(house1.p, house1.q) + Min(house2.r, house2.s);
+            (int length, int width) areaOrder;
+            areaOrder.length=Max(area.a, area.b);
+            areaOrder.width=Min(area.a, area.b);
+            return areaOrder.length >= minArea.length && areaOrder.width>=minArea.width;
         }
     }
 }

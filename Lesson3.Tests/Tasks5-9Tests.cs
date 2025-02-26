@@ -22,7 +22,7 @@ namespace Lesson3
             // Arrange
 
             // Act
-            var result = value.EndsZero();
+            var result = value.IsEndsZero();
             // Assert
             if (resultExpected)
                 Assert.True(result);

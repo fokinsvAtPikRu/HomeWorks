@@ -14,7 +14,7 @@ namespace Lesson3
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static bool EndsZero(this int value) => value % 10 == 0;
+        public static bool IsEndsZero(this int value) => value % 10 == 0;
         /// <summary>
         /// Task 6. The digit is even.
         /// </summary>
