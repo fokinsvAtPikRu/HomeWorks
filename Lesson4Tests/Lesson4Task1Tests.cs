@@ -1,28 +1,30 @@
 using Newtonsoft.Json.Linq;
+using System.ComponentModel;
 
 namespace Lesson4
 {
     public class Lesson4Task1Tests
     {
-        [Theory(DisplayName = "Урок 4. Задание 1. Факториал рекурсивно.")]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        public void FactorialRecursion_SomeData_Result(int n)
+        [Theory(DisplayName = "Урок 4. Задание 1. Факториал рекурсивно. Корректные исходные данные.")]
+        [InlineData(0, 1)]
+        [InlineData(1, 1)]
+        [InlineData(5, 120)]
+        [InlineData(10, 3628800)]
+        public void FactorialRecursion_SomeData_Result(int n, int resultExpected)
         {
             // Arrange
-            int resultExpected = 1;
+            int resultCalculated = 1;
             for (var i = 1; i <= n; i++)
             {
-                resultExpected *= i;
+                resultCalculated *= i;
             }
             // Act
-            var result = Lesson4.Tasks.FactorialRecursion(n);
+            var result = (int)Lesson4.Tasks.FactorialRecursion(n);
             // Assert
-            Assert.Equal(resultExpected, result);
-
+            Assert.Equal(resultExpected,result);
+            Assert.Equal(resultExpected, resultCalculated);
         }
-        [Fact]
+        [Fact(DisplayName = "Урок 4. Задание 1. Факториал рекурсивно. Факториал отрицательного числа, возвращяем null.")]
         public void FactorialRecursion_NegativeInt_Null()
         {
             // Arrange
