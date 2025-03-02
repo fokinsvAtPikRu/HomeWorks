@@ -94,5 +94,15 @@ namespace Lesson4
             else
                 return DigitInNumberHelper(value / 10, ++counter);
         }
+        public static int ReverseDigit(int digit)
+        {
+            int digitReverse=0;
+            while (digit > 0)
+            {
+                digitReverse = digitReverse * 10 + digit % 10;
+                digit /= 10;
+            }
+            return digitReverse;
+        }
     }
 }
