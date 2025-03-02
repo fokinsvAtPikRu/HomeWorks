@@ -12,15 +12,25 @@ namespace Lesson4
         /// Task 1. Factorial recursion
         /// </summary>
         /// <returns></returns>
-        public static int FactorialRecursion(int n)
+        public static int? FactorialRecursion(int n)
         {
+            if (n < 0) return null;
             int factorial;
+            if (n == 0) return 1;
+            else
+            {
+                return factorial=n*(int)FactorialRecursion(--n);
+            }            
+        }
+        public static double? HarmonicSeriesRecursion(int n)
+        {            
+            if (n < 1) return null;
+            double summa;
             if (n == 1) return 1;
             else
             {
-                factorial=n*FactorialRecursion(--n);
+                return summa=1/n+(double)HarmonicSeriesRecursion(--n);
             }
-            return 0;
         }
     }
 }
