@@ -71,14 +71,9 @@ namespace Lesson4
         /// <returns></returns>
         public static bool IsPowerOfTwo(int value)
         {
-            if (value < 0)
-                value = -value;
             if (value == 1) return true;
-            if (value < 2)
-                return value == 0;
-            else
-                if (value % 2 == 1) return false;
-                return IsPowerOfTwo(value / 2);
+            if (value == 0 || value % 2 == 1) return false;            
+            return IsPowerOfTwo(value / 2);
         }
         /// <summary>
         /// Task 7. How many digits are in a number.
@@ -96,6 +91,11 @@ namespace Lesson4
             else
                 return DigitInNumberHelper(value / 10, ++counter);
         }
+        /// <summary>
+        /// Task 8. Reverse digit.
+        /// </summary>
+        /// <param name="digit"></param>
+        /// <returns></returns>
         public static int ReverseDigit(int digit)
         {
             return ReverseDigitHelper(digit, 0);
@@ -105,7 +105,7 @@ namespace Lesson4
             if (digit == 0)
                 return digitReverse;
             else
-                return ReverseDigitHelper(digit/10, digitReverse * 10 + digit % 10);
+                return ReverseDigitHelper(digit / 10, digitReverse * 10 + digit % 10);
         }
     }
 }
