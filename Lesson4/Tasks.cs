@@ -73,9 +73,11 @@ namespace Lesson4
         {
             if (value < 0)
                 value = -value;
+            if (value == 1) return true;
             if (value < 2)
                 return value == 0;
             else
+                if (value % 2 == 1) return false;
                 return IsPowerOfTwo(value / 2);
         }
         /// <summary>
@@ -87,7 +89,7 @@ namespace Lesson4
         {
             return DigitInNumberHelper(value, 0);
         }
-        public static int DigitInNumberHelper(int value, int counter)
+        private static int DigitInNumberHelper(int value, int counter)
         {
             if (value == 0)
                 return counter;
@@ -96,13 +98,14 @@ namespace Lesson4
         }
         public static int ReverseDigit(int digit)
         {
-            int digitReverse=0;
-            while (digit > 0)
-            {
-                digitReverse = digitReverse * 10 + digit % 10;
-                digit /= 10;
-            }
-            return digitReverse;
+            return ReverseDigitHelper(digit, 0);
+        }
+        private static int ReverseDigitHelper(int digit, int digitReverse)
+        {
+            if (digit == 0)
+                return digitReverse;
+            else
+                return ReverseDigitHelper(digit/10, digitReverse * 10 + digit % 10);
         }
     }
 }

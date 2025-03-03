@@ -3,14 +3,15 @@
 internal class Program
 {    private static void Main(string[] args)
     {
-        
-        Console.WriteLine(PositivePowerRecursion(0, 0));
+        int i=ReverseDigitHelper(87, 0);
+        i = i + 1;
     }
-    public static int? PositivePowerRecursion(int value, int power)
+    private static int ReverseDigitHelper(int digit, int digitReverse)
     {
-        if (power < 0) return null;
-        if (power == 0) return 1;
+        if (digit == 0)
+            return digitReverse;
         else
-            return value * PositivePowerRecursion(value, --power);
+            return ReverseDigitHelper(digit / 10, digitReverse * 10 + digit % 10);
     }
+
 }

@@ -9,21 +9,23 @@ namespace Lesson4
     public class Lesson4Task4Tests
     {
         [Theory(DisplayName = "Урок 4. Задание 4. Возведение в отрицательную степень. Корректные данные.")]
-        [InlineData(1, 0)]
-        [InlineData(10, -2)]
-        [InlineData(2, -4)]
-        public void NegativePowerRecursion_SomeData_Result(int value, int power)
+        [InlineData(1, 0, 1)]
+        [InlineData(1, -1, 1)]
+        [InlineData(10, -2, 0.01)]
+        [InlineData(2, -4, 0.0625)]
+        public void NegativePowerRecursion_SomeData_Result(int value, int power, double resultExpected)
         {
             // Arrange
-            double resultExpected = 1;
+            double resultCalculated = 1;
             for (var i = -1; i >= power; i--)
             {
-                resultExpected /= value;
+                resultCalculated /= value;
             }
             // Act
             var result = Lesson4.Tasks.NegativePowerRecursion(value, power);
             // Assert
             Assert.Equal(resultExpected, result);
+            Assert.Equal(resultExpected, resultCalculated);
 
         }
         [Fact(DisplayName = "Урок 4. Задание 4. Возведение в отрицательную степень. Положительная степень, возвращаем null.")]
