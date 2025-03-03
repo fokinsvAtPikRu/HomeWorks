@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lesson4
+﻿namespace Lesson4
 {
     public static class Tasks
     {
@@ -17,10 +11,8 @@ namespace Lesson4
         {
             if (n < 0) return null;
             if (n == 0) return 1;
-            else
-            {
-                return n * FactorialRecursion(--n);
-            }
+            else            
+                return n * FactorialRecursion(--n);            
         }
         /// <summary>
         /// Task 2. The sum of the Harmonic Series.
@@ -32,9 +24,7 @@ namespace Lesson4
             if (n < 1) return null;
             if (n == 1) return 1;
             else
-            {
                 return 1 / (double)n + HarmonicSeriesRecursion(--n);
-            }
         }
         /// <summary>
         /// Task 3. Raising to a positive power.

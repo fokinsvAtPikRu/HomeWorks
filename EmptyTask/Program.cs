@@ -1,7 +1,7 @@
 ﻿using System.Text;
 
-internal class Program
-{    private static void Main(string[] args)
+public class Program
+{    public static void Main(string[] args)
     {
         int i=ReverseDigitHelper(87, 0);
         i = i + 1;
