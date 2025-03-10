@@ -55,7 +55,7 @@ namespace Lesson5
         {
             var temp=x; x=y; y=temp;
         }
-        public static int[] SortArray(int[] array)                                                    // сортировка массива
+        public static int[] SortArray(int[] array,Func<int,int,bool> comparer)                        // сортировка массива
         {                                                                                             // O(n^2) 
             for (int i = 0; i < array.Length; i++)
             {
@@ -63,7 +63,7 @@ namespace Lesson5
                 var maxIndex = i;
                 for (int j = i; j < array.Length; j++)
                 {
-                    if (array[j] > max)
+                    if (comparer(array[j], max))
                     {
                         max = array[j];
                         maxIndex = j;
@@ -73,6 +73,7 @@ namespace Lesson5
             }
             return array;
         }
+
         public static EvenAndOddElements IsNumberOfEvenElementsGreater(int[] array)  // метод выполняет 1 задание урока 5
         {
             int even = CountOfEvenElements(array);
