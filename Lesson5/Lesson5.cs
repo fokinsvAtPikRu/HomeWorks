@@ -60,11 +60,16 @@ namespace Lesson5
             for (int i = 0; i < array.Length; i++)
             {
                 var max = array[i];
+                var maxIndex = i;
                 for (int j = i; j < array.Length; j++)
                 {
-                    max = array[j] > max ? array[j] : max;
+                    if (array[j] > max)
+                    {
+                        max = array[j];
+                        maxIndex = j;
+                    }
                 }
-                Swap(ref max, ref array[i]);
+                Swap(ref array[i], ref array[maxIndex]);
             }
             return array;
         }
