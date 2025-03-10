@@ -51,8 +51,23 @@ namespace Lesson5
             FoldArrayIndex(array, 0,
                 (elementIndex, maxIndex) =>
                 array[elementIndex] > array[maxIndex] ? maxIndex = elementIndex : maxIndex);
-
-
+        public static void Swap(ref int x, ref int y)                                                 // обмен элементов массива
+        {
+            var temp=x; x=y; y=temp;
+        }
+        public static int[] SortArray(int[] array)                                                    // сортировка массива
+        {                                                                                             // O(n^2) 
+            for (int i = 0; i < array.Length; i++)
+            {
+                var max = array[i];
+                for (int j = i; j < array.Length; j++)
+                {
+                    max = array[j] > max ? array[j] : max;
+                }
+                Swap(ref max, ref array[i]);
+            }
+            return array;
+        }
         public static EvenAndOddElements IsNumberOfEvenElementsGreater(int[] array)  // метод выполняет 1 задание урока 5
         {
             int even = CountOfEvenElements(array);
