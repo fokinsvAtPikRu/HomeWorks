@@ -15,7 +15,7 @@ namespace Lesson5
         // Arrange
         
         // Act
-        var result = Lesson5.SortArray(array);
+        var result = Lesson5.SortArray(array, 0,array.Length-1,(x,y)=>);
         // Assert
         Assert.Equal(resultExpected, result);
     }

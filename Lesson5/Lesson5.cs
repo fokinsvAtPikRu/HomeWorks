@@ -55,13 +55,15 @@ namespace Lesson5
         {
             var temp=x; x=y; y=temp;
         }
-        public static int[] SortArray(int[] array,Func<int,int,bool> comparer)                        // сортировка массива
-        {                                                                                             // O(n^2) 
-            for (int i = 0; i < array.Length; i++)
+        public static int[] SortArray(int[] array,int startIndex, int endIndex, Func<int,int,bool> comparer)                        // сортировка массива
+        {                                                                                                                           // O(n^2) 
+            if(startIndex < 0 || startIndex > array.Length-1 ||endIndex > array.Length-1 || startIndex < 0)
+                throw new ArgumentOutOfRangeException("Значения стартового или конечного индекса вне диапазона!");
+            for (int i = startIndex; i <= endIndex; i++)
             {
                 var max = array[i];
                 var maxIndex = i;
-                for (int j = i; j < array.Length; j++)
+                for (int j = i; j <= endIndex; j++)
                 {
                     if (comparer(array[j], max))
                     {
