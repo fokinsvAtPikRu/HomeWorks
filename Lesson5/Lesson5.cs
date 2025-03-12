@@ -20,6 +20,7 @@ namespace Lesson5
             for (int i = 0; i < array.Length; i++)
                 array[i] = rnd.Next(min, max);
         }
+        // можно ввести счетчик и объеденить обе свертки
         public static int FoldArrayValue(int[] array, int acc, Func<int, int, int> f)             // свертка массива foreach
         {                                                                                         // для задач где не нужен              
             foreach (int element in array)                                                        // индекс элемента  
@@ -52,15 +53,15 @@ namespace Lesson5
                 (elementIndex, maxIndex) =>
                 array[elementIndex] > array[maxIndex] ? maxIndex = elementIndex : maxIndex);         // индекс мин элемента
         public static int MinElementIndex(int[] array) =>
-            FoldArrayIndex(array, 0,(elementIndex,minIndex)=>
+            FoldArrayIndex(array, 0, (elementIndex, minIndex) =>
             array[elementIndex] < array[minIndex] ? minIndex = elementIndex : minIndex);
         public static void Swap(ref int x, ref int y)                                                 // обмен элементов массива
         {
-            var temp=x; x=y; y=temp;
+            var temp = x; x = y; y = temp;
         }
-        public static int[] SortArray(int[] array,int startIndex, int endIndex, Func<int,int,bool> comparer)                        // сортировка массива
+        public static int[] SortArray(int[] array, int startIndex, int endIndex, Func<int, int, bool> comparer)                        // сортировка массива
         {                                                                                                                           // O(n^2) 
-            if(startIndex < 0 || startIndex > array.Length-1 ||endIndex > array.Length-1 || startIndex < 0)
+            if (startIndex < 0 || startIndex > array.Length - 1 || endIndex > array.Length - 1 || startIndex < 0)
                 throw new ArgumentOutOfRangeException("Значения стартового или конечного индекса вне диапазона!");
             for (int i = startIndex; i <= endIndex; i++)
             {
@@ -86,27 +87,38 @@ namespace Lesson5
             return
                 even > odd ? EvenAndOddElements.EvenIsMore :    // больше четных
                 even < odd ? EvenAndOddElements.OddIsMore :     // больше нечетных 
-                EvenAndOddElements.Equal;                                                                     // равное количество            
+                EvenAndOddElements.Equal;                       // равное количество            
         }
         public static (int, int, int) CountPositiveNegativeZeroElements(int[] array) =>
             (CountOfPositiveElements(array), CountOfNegativeElements(array), CountOfZeroElements(array));    // метод выполняет 2 задание урока 5
-        public static ((int,int), (int,int)) MaxMinElement(int[] array)                                      // метод выполняет 3 задание урока 5
+        public static ((int, int), (int, int)) MaxMinElement(int[] array)                                      // метод выполняет 3 задание урока 5
         {
             var maxIndex = MaxElementIndex(array);
             var minIndex = MinElementIndex(array);
             return ((maxIndex, array[maxIndex]), (minIndex, array[minIndex]));
         }
-        public static int[] ReverseArray(int[] array)
+        public static int[] ReverseArray(int[] array)                                                        // метод выполняет задание 4 урока 5
         {
             int[] reverse = new int[array.Length];
-            for(var i=0;i<array.Length;i++)
+            for (var i = 0; i < array.Length; i++)
             {
-                reverse[i] = array[array.Length-1-i];
+                reverse[i] = array[array.Length - 1 - i];
             }
             return reverse;
-        }          
-        
-
-
+        }
+        public static int[] SortAscendingDescending(int[] array)                                             // метод выполняет задание 4 урока 5
+        {
+            SortArray(array, 0, 4, (element, max) => element < max ? true : false);
+            SortArray(array, 5, 9, (element, max) => element > max ? true : false);
+            return array;
+        }
+        public static bool[,] ChessDeskArray(int raw, int columns)
+        {
+            bool[,] array = new bool[raw, columns];
+            for (var i = 0; i < raw; i++)
+                for (var j = 0; j < columns; j++)
+                    array[i, j] = (i + j) % 2 == 0;
+            return array;
+        }
     }
 }
