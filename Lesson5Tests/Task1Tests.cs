@@ -19,7 +19,7 @@
         [Theory(DisplayName = "Урок 5. Задание 1. Каких чисел больше - четных или нечетных. Нечетных больше")]
         [InlineData(new int[] { 1 }, EvenAndOddElements.OddIsMore)]
         [InlineData(new int[] { 1, 1, 3, 5, 4, 2 }, EvenAndOddElements.OddIsMore)]
-        [InlineData(new int[] { 3, 1, 1, 15, 4, 6, 8, 10 }, EvenAndOddElements.OddIsMore)]
+        [InlineData(new int[] { 3, 1, 1, 15, 4, 6, 8 }, EvenAndOddElements.OddIsMore)]
         [InlineData(new int[] { 3, 1, 1, 15, 4, 6, 8, 11 }, EvenAndOddElements.OddIsMore)]
         [InlineData(new int[] { 3, 1, 1, 15, 4, 6, 7, 10 }, EvenAndOddElements.OddIsMore)]
 

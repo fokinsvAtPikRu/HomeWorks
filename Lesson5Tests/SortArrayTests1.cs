@@ -15,7 +15,7 @@ namespace Lesson5
         // Arrange
         
         // Act
-        var result = Lesson5.SortArray(array, 0,array.Length-1,(x,y)=>);
+        var result = Lesson5.SortArray(array, 0,array.Length-1,(element,max)=>max<element?true:false);
         // Assert
         Assert.Equal(resultExpected, result);
     }

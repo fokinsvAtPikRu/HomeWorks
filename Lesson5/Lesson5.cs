@@ -30,7 +30,7 @@ namespace Lesson5
         {
             for (int i = 0; i < array.Length; i++)
             {
-                accIndex = f(array[i], accIndex);
+                accIndex = f(array[i], array[accIndex]);
             }
             return accIndex;
         }
@@ -51,6 +51,9 @@ namespace Lesson5
             FoldArrayIndex(array, 0,
                 (elementIndex, maxIndex) =>
                 array[elementIndex] > array[maxIndex] ? maxIndex = elementIndex : maxIndex);
+        public static int MinElementIndex(int[] array) =>
+            FoldArrayIndex(array, 0,(elementIndex,minIndex)=>
+            array[elementIndex] < array[minIndex] ? minIndex = elementIndex : minIndex);
         public static void Swap(ref int x, ref int y)                                                 // обмен элементов массива
         {
             var temp=x; x=y; y=temp;
@@ -87,7 +90,14 @@ namespace Lesson5
         }
         public static (int, int, int) CountPositiveNegativeZeroElements(int[] array) =>
             (CountOfPositiveElements(array), CountOfNegativeElements(array), CountOfZeroElements(array));    // метод выполняет 2 задание урока 5
-
+        public static ((int,int), (int,int)) MaxMinElement(int[] array)                                      // метод выполняет 3 задание урока 5
+        {
+            var maxIndex = MaxElementIndex(array);
+            var minIndex = MinElementIndex(array);
+            return ((maxIndex, array[maxIndex]), (minIndex, array[minIndex]));
+        }
+            
+        
 
 
     }
