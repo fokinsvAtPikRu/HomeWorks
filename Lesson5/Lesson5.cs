@@ -30,7 +30,7 @@ namespace Lesson5
         {
             for (int i = 0; i < array.Length; i++)
             {
-                accIndex = f(array[i], array[accIndex]);
+                accIndex = f(i, accIndex);
             }
             return accIndex;
         }
@@ -50,7 +50,7 @@ namespace Lesson5
         public static int MaxElementIndex(int[] array) =>                                            // индекс макс элемента
             FoldArrayIndex(array, 0,
                 (elementIndex, maxIndex) =>
-                array[elementIndex] > array[maxIndex] ? maxIndex = elementIndex : maxIndex);
+                array[elementIndex] > array[maxIndex] ? maxIndex = elementIndex : maxIndex);         // индекс мин элемента
         public static int MinElementIndex(int[] array) =>
             FoldArrayIndex(array, 0,(elementIndex,minIndex)=>
             array[elementIndex] < array[minIndex] ? minIndex = elementIndex : minIndex);
@@ -96,7 +96,15 @@ namespace Lesson5
             var minIndex = MinElementIndex(array);
             return ((maxIndex, array[maxIndex]), (minIndex, array[minIndex]));
         }
-            
+        public static int[] ReverseArray(int[] array)
+        {
+            int[] reverse = new int[array.Length];
+            for(var i=0;i<array.Length;i++)
+            {
+                reverse[i] = array[array.Length-1-i];
+            }
+            return reverse;
+        }          
         
 
 
