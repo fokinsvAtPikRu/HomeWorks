@@ -1,4 +1,5 @@
 ﻿using Lesson3;
+using System.Numerics;
 using System.Security.Cryptography;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -14,7 +15,7 @@ namespace Lesson5
     public class Lesson5
     {
         public static int[] CreateArray(int length) => new int[length];               // фабрика массивов
-        public static int[,] CreateArray(int raw,int columns) => new int[raw,columns];
+        public static int[,] CreateArray(int raw, int columns) => new int[raw, columns];
         public static void AddRandomElements(int[] array, int min, int max)           // заполнение массива случайными значениями 
         {
             var rnd = new Random();
@@ -113,7 +114,7 @@ namespace Lesson5
             SortArray(array, 5, 9, (element, max) => element > max ? true : false);
             return array;
         }
-        public static bool[,] ChessDeskArray(int raw, int columns)                                           // метод выполняет задание 6 урока 5
+        public static bool[,] ChessDeskArray(int raw, int columns)        // метод выполняет задание 6 урока 5
         {
             bool[,] array = new bool[raw, columns];
             for (var i = 0; i < raw; i++)
@@ -121,9 +122,52 @@ namespace Lesson5
                     array[i, j] = (i + j) % 2 == 0;
             return array;
         }
-        public static int[] MaxInRaw(int[,] array)
+        public static int[] MaxInRaw(int[,] array)                        // метод выполняет задание 7 урока 5
         {
-
+            int raws = array.GetUpperBound(0) + 1;       // количество строк
+            int columns = array.GetUpperBound(1) + 1;    // количество столбцов
+            int[] maxInRaw = new int[raws];
+            int max;
+            for (var i = 0; i < raws; i++)
+            {
+                max = array[i, 0];
+                for (int j = 0; j < columns; j++)
+                {
+                    max = array[i, j] > columns ? array[i, j] : max;
+                }
+                maxInRaw[i] = max;
+            }
+            return maxInRaw;
+        }
+        public static (int, int) TwoGreatestValue(int[] array)            // метод выполняет задание 8 урока 5
+        {
+            int[] araySorted = SortArray(array, 0, array.Length, (element, max) => element > max ? true : false);
+            return (araySorted[0], araySorted[1]);
+        }
+        public static int[,] FillSpiral(int raws, int coluns)             // метод выполняет задание 9 урока 5
+        {
+            int[,] array = new int[raws, coluns];
+            array.Initialize();
+            int i = 0, j = 0, currentValue = 0;
+            bool moveToRaw=true;
+            while(moveToRaw ? array[i, j + 1] == 0 : array[i + 1, j] == 0)
+            {
+                while (moveToRaw ? array[i, j + 1] == 0 : array[i + 1, j] == 0)
+                {
+                    if (moveToRaw)
+                    {
+                        array[i, j + 1] = currentValue++;
+                        j++;
+                    }
+                    else
+                    {
+                        array[i + 1, j]= currentValue++;
+                        i++;
+                    }
+                    moveToRaw=!moveToRaw;
+                }
+            }
+            return array;
         }
     }
 }
