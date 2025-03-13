@@ -14,6 +14,7 @@ namespace Lesson5
     public class Lesson5
     {
         public static int[] CreateArray(int length) => new int[length];               // фабрика массивов
+        public static int[,] CreateArray(int raw,int columns) => new int[raw,columns];
         public static void AddRandomElements(int[] array, int min, int max)           // заполнение массива случайными значениями 
         {
             var rnd = new Random();
@@ -106,19 +107,23 @@ namespace Lesson5
             }
             return reverse;
         }
-        public static int[] SortAscendingDescending(int[] array)                                             // метод выполняет задание 4 урока 5
+        public static int[] SortAscendingDescending(int[] array)                                             // метод выполняет задание 5 урока 5
         {
             SortArray(array, 0, 4, (element, max) => element < max ? true : false);
             SortArray(array, 5, 9, (element, max) => element > max ? true : false);
             return array;
         }
-        public static bool[,] ChessDeskArray(int raw, int columns)
+        public static bool[,] ChessDeskArray(int raw, int columns)                                           // метод выполняет задание 6 урока 5
         {
             bool[,] array = new bool[raw, columns];
             for (var i = 0; i < raw; i++)
                 for (var j = 0; j < columns; j++)
                     array[i, j] = (i + j) % 2 == 0;
             return array;
+        }
+        public static int[] MaxInRaw(int[,] array)
+        {
+
         }
     }
 }
