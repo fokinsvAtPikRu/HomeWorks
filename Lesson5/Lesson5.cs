@@ -133,7 +133,7 @@ namespace Lesson5
                 max = array[i, 0];
                 for (int j = 0; j < columns; j++)
                 {
-                    max = array[i, j] > columns ? array[i, j] : max;
+                    max = array[i, j] > max ? array[i, j] : max;
                 }
                 maxInRaw[i] = max;
             }
@@ -141,33 +141,41 @@ namespace Lesson5
         }
         public static (int, int) TwoGreatestValue(int[] array)            // метод выполняет задание 8 урока 5
         {
-            int[] araySorted = SortArray(array, 0, array.Length, (element, max) => element > max ? true : false);
-            return (araySorted[0], araySorted[1]);
+            int[] araySorted = SortArray(array, 0, array.Length-1, (element, max) => element > max ? true : false);
+            if (araySorted.Length > 1)
+                return (araySorted[0], araySorted[1]);
+            else if (araySorted.Length == 1)
+                return (araySorted[0], araySorted[0]);
+            else
+                throw new Exception("Массив пустой");
         }
-        public static int[,] FillSpiral(int raws, int coluns)             // метод выполняет задание 9 урока 5
-        {
-            int[,] array = new int[raws, coluns];
-            array.Initialize();
-            int i = 0, j = 0, currentValue = 0;
-            bool moveToRaw=true;
-            while(moveToRaw ? array[i, j + 1] == 0 : array[i + 1, j] == 0)
-            {
-                while (moveToRaw ? array[i, j + 1] == 0 : array[i + 1, j] == 0)
-                {
-                    if (moveToRaw)
-                    {
-                        array[i, j + 1] = currentValue++;
-                        j++;
-                    }
-                    else
-                    {
-                        array[i + 1, j]= currentValue++;
-                        i++;
-                    }
-                    moveToRaw=!moveToRaw;
-                }
-            }
-            return array;
-        }
+        //public static int[,] FillSpiral(int raws, int coluns)             // метод выполняет задание 9 урока 5
+        //{
+        //    int[,] array = new int[raws, coluns];
+        //    array.Initialize();
+        //    int i = 0, j = 0, currentValue = 0;
+        //    bool moveToRaw=true;
+        //    bool moveToLeft=true;
+        //    bool moveDown = true;
+        //    while(moveToRaw ? array[i, j + 1] == 0 : array[i + 1, j] == 0)
+        //    {
+        //        while (moveToRaw ? array[i, j + 1] == 0 : array[i + 1, j] == 0)
+        //        {
+        //            if (moveToRaw)
+        //            {
+        //                array[i, j + 1] = currentValue++;
+        //                j++;
+        //            }
+        //            else
+        //            {
+        //                array[i + 1, j]= currentValue++;
+        //                i++;
+        //            }
+        //            moveToRaw=!moveToRaw;
+        //        }
+        //    }
+        //    return array;
+        //}
+
     }
 }
