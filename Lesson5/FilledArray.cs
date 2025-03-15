@@ -13,10 +13,10 @@
             columnCount = column;
             array = new int[rowCount, columnCount];
             currentCell = new Cell(0, 0, DirectionMovement.Right);
-            int value = 0;
+            int value = 1;
 
             // Заполняем массив, пока не заполним все ячейки
-            while (value < rowCount * columnCount)
+            while (value <= rowCount * columnCount)
             {
                 // Заполняем текущую ячейку
                 array[currentCell.row, currentCell.column] = value++;
