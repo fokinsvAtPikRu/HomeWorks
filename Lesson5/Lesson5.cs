@@ -1,10 +1,4 @@
-﻿using Lesson3;
-using System.Numerics;
-using System.Security.Cryptography;
-using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Lesson5
+﻿namespace Lesson5
 {
     public enum EvenAndOddElements // для результата первого задания
     {
@@ -61,8 +55,8 @@ namespace Lesson5
         {
             var temp = x; x = y; y = temp;
         }
-        public static int[] SortArray(int[] array, int startIndex, int endIndex, Func<int, int, bool> comparer)                        // сортировка массива
-        {                                                                                                                           // O(n^2) 
+        public static int[] SortArray(int[] array, int startIndex, int endIndex, Func<int, int, bool> comparer)      // сортировка массива
+        {                                                                                                            // O(n^2) 
             if (startIndex < 0 || startIndex > array.Length - 1 || endIndex > array.Length - 1 || startIndex < 0)
                 throw new ArgumentOutOfRangeException("Значения стартового или конечного индекса вне диапазона!");
             for (int i = startIndex; i <= endIndex; i++)
@@ -93,7 +87,7 @@ namespace Lesson5
         }
         public static (int, int, int) CountPositiveNegativeZeroElements(int[] array) =>
             (CountOfPositiveElements(array), CountOfNegativeElements(array), CountOfZeroElements(array));    // метод выполняет 2 задание урока 5
-        public static ((int, int), (int, int)) MaxMinElement(int[] array)                                      // метод выполняет 3 задание урока 5
+        public static ((int, int), (int, int)) MaxMinElement(int[] array)                                    // метод выполняет 3 задание урока 5
         {
             var maxIndex = MaxElementIndex(array);
             var minIndex = MinElementIndex(array);
@@ -141,41 +135,13 @@ namespace Lesson5
         }
         public static (int, int) TwoGreatestValue(int[] array)            // метод выполняет задание 8 урока 5
         {
-            int[] araySorted = SortArray(array, 0, array.Length-1, (element, max) => element > max ? true : false);
+            int[] araySorted = SortArray(array, 0, array.Length - 1, (element, max) => element > max ? true : false);
             if (araySorted.Length > 1)
                 return (araySorted[0], araySorted[1]);
             else if (araySorted.Length == 1)
                 return (araySorted[0], araySorted[0]);
             else
-                throw new Exception("Массив пустой");
-        }
-        //public static int[,] FillSpiral(int raws, int coluns)             // метод выполняет задание 9 урока 5
-        //{
-        //    int[,] array = new int[raws, coluns];
-        //    array.Initialize();
-        //    int i = 0, j = 0, currentValue = 0;
-        //    bool moveToRaw=true;
-        //    bool moveToLeft=true;
-        //    bool moveDown = true;
-        //    while(moveToRaw ? array[i, j + 1] == 0 : array[i + 1, j] == 0)
-        //    {
-        //        while (moveToRaw ? array[i, j + 1] == 0 : array[i + 1, j] == 0)
-        //        {
-        //            if (moveToRaw)
-        //            {
-        //                array[i, j + 1] = currentValue++;
-        //                j++;
-        //            }
-        //            else
-        //            {
-        //                array[i + 1, j]= currentValue++;
-        //                i++;
-        //            }
-        //            moveToRaw=!moveToRaw;
-        //        }
-        //    }
-        //    return array;
-        //}
-
+                throw new ArgumentException("Массив пустой");
+        }        
     }
 }

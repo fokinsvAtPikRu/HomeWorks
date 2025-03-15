@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lesson5
 {    
-    public class Lesson5Task6Tests
+    public class Lesson5Task
     {
         [Fact]
         public static void ChessDeskArray_2and2_Array()
