@@ -57,7 +57,7 @@
         }
         public static int[] SortArray(int[] array, int startIndex, int endIndex, Func<int, int, bool> comparer)      // сортировка массива
         {                                                                                                            // O(n^2) 
-            if (startIndex < 0 || startIndex > array.Length - 1 || endIndex > array.Length - 1 || startIndex < 0)
+            if (startIndex < 0 || startIndex > array.Length - 1 || endIndex > array.Length - 1 || startIndex < 0)    // в Array есть метод Sort
                 throw new ArgumentOutOfRangeException("Значения стартового или конечного индекса вне диапазона!");
             for (int i = startIndex; i <= endIndex; i++)
             {
@@ -79,7 +79,7 @@
         public static EvenAndOddElements IsNumberOfEvenElementsGreater(int[] array)  // метод выполняет 1 задание урока 5
         {
             int even = CountOfEvenElements(array);
-            int odd = CountOfOddElements(array);
+            int odd = CountOfOddElements(array);                // можно сделать odd=Length-even
             return
                 even > odd ? EvenAndOddElements.EvenIsMore :    // больше четных
                 even < odd ? EvenAndOddElements.OddIsMore :     // больше нечетных 
@@ -93,16 +93,16 @@
             var minIndex = MinElementIndex(array);
             return ((maxIndex, array[maxIndex]), (minIndex, array[minIndex]));
         }
-        public static int[] ReverseArray(int[] array)                                                        // метод выполняет задание 4 урока 5
-        {
-            int[] reverse = new int[array.Length];
+        public static int[] ReverseArray(int[] array)                                             // метод выполняет задание 4 урока 5
+        {                                                                                         // в классе Array есть метод Reverse
+            int[] reverse = new int[array.Length];                                                // Array.Reverse(array); делает то же самое
             for (var i = 0; i < array.Length; i++)
             {
                 reverse[i] = array[array.Length - 1 - i];
             }
             return reverse;
         }
-        public static int[] SortAscendingDescending(int[] array)                                             // метод выполняет задание 5 урока 5
+        public static int[] SortAscendingDescending(int[] array)                                   // метод выполняет задание 5 урока 5
         {
             SortArray(array, 0, 4, (element, max) => element < max ? true : false);
             SortArray(array, 5, 9, (element, max) => element > max ? true : false);
@@ -142,6 +142,46 @@
                 return (araySorted[0], araySorted[0]);
             else
                 throw new ArgumentException("Массив пустой");
-        }        
+        }
+        public static bool IsXWins(bool[,] array)        // метод выполняет задание 10 урока 5
+        {
+            int rows = array.GetUpperBound(0) + 1;       // количество строк
+            int columns = array.GetUpperBound(1) + 1;    // количество столбцов
+            bool xWins;
+            for (var i = 0; i < rows; i++)               // проверяем строки
+            {
+                xWins=true;
+                for (int j = 0; j < columns; j++)
+                {
+                    if (!array[i, j])
+                    {  xWins = false; break; }           // если встречаем ноль, переходим на новую строку              
+                }
+                if (xWins) return true;                     // строка без 0 найдена, Х выиграли
+            }
+            for (var i = 0; i < columns; i++)               // проверяем столбцы
+            {
+                xWins = true;
+                for (int j = 0; j < rows; j++)
+                {
+                    if (!array[j, i])
+                    { xWins = false; break; }            // если встречаем ноль, переходим на новую строку
+                }
+                if (xWins) return true;                     // столбец без 0 найдена, Х выиграли
+            }
+            xWins = true;
+            for (var i = 0; i < columns; i++)               // проверяем диагональ
+            {
+                if (!array[i,i]) 
+                    { xWins = false; break; }
+            }
+            if (xWins) return true;
+            for (var i = columns-1; i <= 0; i--)            // проверяем другую диагональ
+            {
+                if (!array[i, i])
+                { xWins = false; break; }
+            }
+            if (xWins) return true;
+            return false;
+        }
     }
 }

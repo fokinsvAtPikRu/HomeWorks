@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Lesson5
 {    
-    public class Lesson5Task
+    public class Lesson5Task6
     {
-        [Fact]
-        public static void ChessDeskArray_2and2_Array()
+        [Fact(DisplayName = "Урок 5. Задание 6. Заполнение массива как шахматная доска. Массив 2х2")]
+        public static void ChessDeskArray_2x2_Array()
         {
             // Arrange
             var resultExpected=new bool[,] { { true, false }, { false, true } };
@@ -18,8 +18,8 @@ namespace Lesson5
             // Assert
             Assert.Equal(resultExpected, result);
         }
-        [Fact]
-        public static void ChessDeskArray_3and4_Array()
+        [Fact(DisplayName = "Урок 5. Задание 6. Заполнение массива как шахматная доска. Массив 3х4")]
+        public static void ChessDeskArray_3x4_Array()
         {
             // Arrange
             var resultExpected = new bool[,] { { true, false, true, false }, { false, true, false, true }, { true, false, true, false } };
