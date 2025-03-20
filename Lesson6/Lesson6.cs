@@ -31,12 +31,19 @@ namespace Lesson6
             }
             return true;
         }
-        public static string Task3Report(DateTime dateTime, decimal totalSellsCent, uint countGoodsSells)
+        public static string Task3Report(DateTime date, decimal totalSells, uint countGoodsSells)
         {
-            var report = new StringBuilder($"Отчет о продажах за {dateTime.Month} {dateTime.Year}");
-            
-
-
+            double averageProductPrice = (double)totalSells / countGoodsSells;
+            var report = new StringBuilder(new string('-', 60));
+            report.Append("\n");
+            report.Append($"Отчет о продажах за {date.ToString("MMMM")} {date.Year}");
+            report.Append("\n");
+            report.Append('-', 60);
+            report.Append("\n");
+            report.Append($"Общая сумма продаж: {totalSells:0,0.00} руб \n");
+            report.Append($"Количество проданных товаров: {countGoodsSells} шт \n");
+            report.Append($"Средняя стоимость товаров - {averageProductPrice:N2} руб/шт \n");
+            report.Append('-', 60);
             return report.ToString();
         }
     }
