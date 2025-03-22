@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Lesson6
+﻿namespace Lesson6
 {
-
     public class Lesson6Task3Tests
     {
         [Fact(DisplayName = "Урок 6. Задача 3. Вывести отчет.")]
