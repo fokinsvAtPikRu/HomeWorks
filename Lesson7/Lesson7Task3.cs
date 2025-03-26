@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Lesson7
 {
@@ -11,11 +7,13 @@ namespace Lesson7
         void Display(string data);
     }
     public static partial class Lesson7
-    {
-        public interface IDisplayService
-        {
-            void Display(string data);
-        }
+    {        
+        /// <summary>
+        /// Урок 7. Задание 3. Массив в строку, необязательный параметр reverse
+        /// </summary>
+        /// <param name="numbers"></param>
+        /// <param name="reverse"></param>
+        /// <returns></returns>        
         public static  string PrintNumbers(int[] numbers,bool reverse = false)
         { 
             var result=new StringBuilder();
@@ -26,11 +24,10 @@ namespace Lesson7
             }
             return result.ToString();
         }        
-        public static void DisplayResult(string data, IDisplayService service) => service.Display(data);
+        static void DisplayResult(string data, IDisplayService service) => service.Display(data);
     }
     class DisplayToConsole : IDisplayService
     {
-        public void Display(string data) => Console.WriteLine(data); 
-        
+        public void Display(string data) => Console.WriteLine(data);         
     }
 }
