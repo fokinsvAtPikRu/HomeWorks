@@ -43,9 +43,7 @@ namespace Lesson5
         [Fact(DisplayName = "Урок 5. Задача 10. Проверить, выиграли крестики. Поле 3х3. Выиграли столбец")]
         public static void IsXWins_3x3_ColumnTrue()
         {
-            // Arrange
-            int row = 3;
-            int columns = 3;
+            // Arrange            
             bool[,] array = { 
                 { false, true, false }, 
                 { true, true, true }, 
