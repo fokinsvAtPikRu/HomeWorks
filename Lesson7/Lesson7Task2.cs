@@ -8,10 +8,12 @@
         /// <param name="edgeCube"></param>
         /// <param name="cubeVolume"></param>
         /// <param name="cubeArea"></param>
-        public static void CalcCube(double edgeCube, out double cubeVolume, double cubeArea)
+        public static void CalcCube(double edgeCube, out double cubeVolume, out double cubeArea)
         {
-            cubeArea = 6*edgeCube*edgeCube;
+            if (edgeCube <= 0 )
+                throw new ArgumentException("Длина ребра куба должна быть положительным числом!");
             cubeVolume = edgeCube*edgeCube*edgeCube;
+            cubeArea = 6 * edgeCube * edgeCube;
         }
     }
 }

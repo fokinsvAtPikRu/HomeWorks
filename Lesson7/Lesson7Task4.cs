@@ -1,5 +1,6 @@
 ﻿namespace Lesson7
 {
+    
     public static partial class Lesson7
     {
         /// <summary>

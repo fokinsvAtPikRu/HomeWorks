@@ -16,8 +16,10 @@ namespace Lesson7
         /// <returns></returns>        
         public static  string PrintNumbers(int[] numbers,bool reverse = false)
         { 
+            if (numbers==null)
+                throw new ArgumentNullException(nameof(numbers));
             var result=new StringBuilder();
-            if (reverse) numbers.Reverse();
+            if (reverse) Array.Reverse(numbers);
             foreach (var number in numbers)
             {
                 result.Append(number.ToString()).Append(" ");
