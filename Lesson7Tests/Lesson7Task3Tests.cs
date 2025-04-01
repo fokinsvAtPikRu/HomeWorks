@@ -10,9 +10,9 @@ namespace Lesson7
     {
         [Theory(DisplayName = "Урок 7. Задача 3. Вывести массив в строку без реверса. Корректные данные.")]
         [InlineData(new int[] {  }, "")]
-        [InlineData(new int[] { 1 }, "1 ")]
-        [InlineData(new int[] { 1 ,2 }, "1 2 ")]
-        [InlineData(new int[] { 3,4,5 }, "3 4 5 ")]
+        [InlineData(new int[] { 1 }, "1")]
+        [InlineData(new int[] { 1 ,2 }, "1 2")]
+        [InlineData(new int[] { 3,4,5 }, "3 4 5")]
         public void Task3PrintNumbers_ValideDataNotReverse_Result(int[] numbers, string resultExpected)
         {
             // Arrange
@@ -23,9 +23,9 @@ namespace Lesson7
             Assert.Equal(resultExpected, result);
         }
         [Theory(DisplayName = "Урок 7. Задача 3. Вывести массив в строку реверс. Корректные данные.")]
-        [InlineData(new int[] { 1 }, "1 ")]
-        [InlineData(new int[] { 1, 2 }, "2 1 ")]
-        [InlineData(new int[] { 3, 4, 5 }, "5 4 3 ")]
+        [InlineData(new int[] { 1 }, "1")]
+        [InlineData(new int[] { 1, 2 }, "2 1")]
+        [InlineData(new int[] { 3, 4, 5 }, "5 4 3")]
         public void Task3PrintNumbers_ValideDataReverse_Result(int[] numbers, string resultExpected)
         {
             // Arrange
