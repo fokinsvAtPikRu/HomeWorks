@@ -15,18 +15,16 @@
             switch (action)
             {
                 case Operation.Add:
-                    result = op1+op2;
+                    result = op1 + op2;
                     break;
-                    case Operation.Subtract:
-                    result = op1-op2;
+                case Operation.Subtract:
+                    result = op1 - op2;
                     break;
-                    case Operation.Multiply:
-                    result = op1*op2;
+                case Operation.Multiply:
+                    result = op1 * op2;
                     break;
-                    case Operation.Divide:
-                    if (op2 == 0)
-                        throw new DivideByZeroException("Деление на ноль!");
-                    result = op2/op1;
+                case Operation.Divide:
+                    result = op2 == 0 ? throw new DivideByZeroException("Деление на ноль!") : op2 / op1;
                     break;
             }
             return result;
