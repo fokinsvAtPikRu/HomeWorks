@@ -1,14 +1,14 @@
 ﻿namespace Lesson8
 {
-    public class Lesson8Task1
+    public enum Operation
     {
-        public enum Operation
-        {
-            Add,
-            Subtract,
-            Multiply,
-            Divide
-        }
+        Add,
+        Subtract,
+        Multiply,
+        Divide
+    }
+    public class Lesson8Task1
+    {        
         public static double Calculate(double op1, double op2, Operation action)
         {
             double result = 0;
@@ -24,7 +24,7 @@
                     result = op1 * op2;
                     break;
                 case Operation.Divide:
-                    result = op2 == 0 ? throw new DivideByZeroException("Деление на ноль!") : op2 / op1;
+                    result = op2 == 0 ? throw new DivideByZeroException("Деление на ноль!") : op1 / op2;
                     break;
             }
             return result;

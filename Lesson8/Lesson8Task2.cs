@@ -11,6 +11,6 @@ namespace Lesson8
     {
         public static int ValidateAge(int age) =>
             age < 0 ? throw new ArgumentException("Возраст не может быть отрицательным!") :
-                age > 150 ? throw new ArgumentOutOfRangeException("Слишком большой возраст") : age;
+                age > 150 ? throw new ArgumentOutOfRangeException("Слишком большой возраст") : age;        
     }
 }
