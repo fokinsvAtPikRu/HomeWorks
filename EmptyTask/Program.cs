@@ -6,29 +6,17 @@ public class Program
 {
 
 
-    public static void Main(string[] args)
+    public static void Main()
     {
-        string path= new string(@"E:\test.txt");
-        SaveStringWithEscapeSequences(Task4StringBuilder("Мурчеслав", 4, "Муром"),path);
+        int n = 5;
+        Console.WriteLine(FactorialRecursion(n));        
         Console.ReadKey();
     }
-
-    public static string Task4StringBuilder(string name, int age, string city) =>
-            new StringBuilder().Append($"Имя: {name}, ").Append($"Возраст: {age}, ").Append($"Город: {city}").ToString();
-    static void SaveStringWithEscapeSequences(string input, string filePath)
+    public static int? FactorialRecursion(int n)
     {
-        try
-        {
-            string escapedText = input
-                .Replace("\n", "\\n")
-                .Replace("\r", "\\r")
-                .Replace("\t", "\\t");
-
-            File.WriteAllText(filePath, escapedText, Encoding.UTF8);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Ошибка при сохранении файла: {ex.Message}");
-        }
+        if (n < 0) return null;
+        if (n == 0) return 1;
+        else
+            return n * FactorialRecursion(--n);
     }
 }
