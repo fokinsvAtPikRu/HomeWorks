@@ -7,31 +7,33 @@ using System.Threading.Tasks;
 
 namespace MyEducation
 {
+    internal class Node<T>
+    {
+        internal T Value { get; set; }
+        internal Node<T> NextItem { get; set; }
+        internal Node(T value, Node<T> nextItem)
+        {
+            Value = value;
+            NextItem = nextItem;
+        }
+    }
     internal class MyQueue<T> : IEnumerable<T>
     {
-        private class Node
-        {
-            internal T Value { get; set; }
-            internal Node NextItem { get; set; }
-            internal Node(T value, Node nextItem)
-            {
-                Value = value;
-                NextItem = nextItem;
-            }
-        }
-        private Node head;
-        private Node tail;
+        #region
+
+        internal Node<T> head;
+        private Node<T> tail;
         public bool IsEmpty => head == null;
         public void Enqueue(T element)
         {
             if (head == null)
             {
-                head = new Node(element, null);
+                head = new Node<T>(element, null);
             }
             else
             {
                 tail = head;
-                head = new Node((T)element, tail);
+                head = new Node<T>((T)element, tail);
             }
         }
         public T Dequeue()
@@ -40,25 +42,56 @@ namespace MyEducation
                 throw new InvalidOperationException("Queue is empty");
             T result = head.Value;
             head = head.NextItem;
-            if (tail != null)
-                tail=tail.NextItem;
-            if (head == null)
-                tail = null;
+            tail = tail != null ? tail.NextItem : null;
             return result;
+            #endregion
         }
+        // IEnumerator с yield return
+        //public IEnumerator<T> GetEnumerator()
+        //{
+        //    var current = head;
+        //    while (current != null)
+        //    {
+        //        yield return current.Value;
+        //        current = current.NextItem;
+        //    }
+        //}
+
+        // реализация Enumerator<T>
         public IEnumerator<T> GetEnumerator()
         {
-            var current = head;
-            while (current!=null)
-            {
-                yield return current.Value;
-                current = current.NextItem;
-            }
+            return new QueueEnumerator<T>(this);
         }
-
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
+        public class QueueEnumerator<T> : IEnumerator<T>
+        {
+            MyQueue<T> queue;
+            Node<T> item;
+            public QueueEnumerator(MyQueue<T> queue)
+            {
+                this.queue = queue;
+                item = null;
+            }
+
+            public T Current => item.Value;
+            public bool MoveNext()
+            {
+                if (item == null)
+                    item = queue.head;
+                else
+                    item = item.NextItem;
+                return item != null;
+            }
+
+            object IEnumerator.Current => Current;
+
+            public void Dispose() { }
+            public void Reset() { }
+        }
     }
 }
+    
+
