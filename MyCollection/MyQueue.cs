@@ -32,8 +32,10 @@ namespace MyEducation
             }
             else
             {
-                tail = head;
-                head = new Node<T>((T)element, tail);
+                var current = head;
+                while (current.NextItem != null)
+                     current = current.NextItem; 
+                current.NextItem = new Node<T>(element,null);                
             }
         }
         public T Dequeue()
