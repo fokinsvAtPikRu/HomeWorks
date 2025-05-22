@@ -4,16 +4,20 @@ internal class Program
     public delegate T Transformer<T>(int value);
     private static void Main(string[] args)
     {
-        Transformer<int> multiplyBy2 = x => x * 2;
-        Transformer<int> square = x => x * x;
-        Transformer<int> abs = x => Math.Abs(x);
+        Transformer<int>[] transformerList =
+        {
+            x=>x*2,
+            x=>x*x,
+            x=>Math.Abs(x)
+        };        
         int[] data = { 1, 2, 5, -7, 9 };
-        int[] result = Transform<int>(data, multiplyBy2);
-        PrintArray(result);
-        result = Transform<int>(data, square);
-        PrintArray(result);
-        result = Transform<int>(data, abs);
-        PrintArray(result);
+        int[] result;
+        foreach(var transformer in transformerList)
+        {
+            result=Transform<int>(data, transformer);
+            PrintArray(result);
+        }   
+        
     }
     public static T[] Transform<T>(int[] data, Transformer<T> transformer)
     {
