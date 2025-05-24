@@ -28,6 +28,7 @@ internal class Program
         }
         return result;
     }
+
     public static void PrintArray<T>(T[] result)
     {
         foreach (var i in result)
