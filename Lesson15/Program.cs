@@ -75,7 +75,7 @@
             if (!int.TryParse(input, out int number))
                 return false;
             n = Convert.ToInt32(input);
-            return number >= 1 && number <= n;
+            return number >= 1 && number <= maxValue;
         }
         private static void Menu1(List<Computer> computers)
         {
